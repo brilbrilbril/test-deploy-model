@@ -1,0 +1,18 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
+steps:
+  #build
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/ci-cd-practice-cloud/fastapi-app:latest', '.']
+
+  #deploy
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/ci-cd-practice-cloud/fastapi-app:latest']
+
+  #push deploy to cloud run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'fast-api-test', '--image', 'gcr.io/ci-cd-practice-cloud/fastapi-app:latest', '--region', 'us-central1', '--platform', 'managed', --allow-unauthenticated]
+
+images:
+  - 'gcr.io/ci-cd-practice-cloud/fastapi-app:latest'
