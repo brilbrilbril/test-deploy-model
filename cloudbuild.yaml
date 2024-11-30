@@ -1,22 +1,22 @@
 options:
   logging: CLOUD_LOGGING_ONLY
 steps:
-  #build
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/test-model-deploy-443310/fastapi-app:latest', '.']
+#   #build
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['build', '-t', 'gcr.io/test-model-deploy-443310/fastapi-app:latest', '.']
 
-  #push
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/test-model-deploy-443310/fastapi-app:latest']
+#   #push
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['push', 'gcr.io/test-model-deploy-443310/fastapi-app:latest']
 
   #deploy to gke
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: 'sh'
+  entrypoint: 'bash'
   args:
     - 'c'
     - |
       kubectl apply -f kubernetes/deployment.yaml
-      kubectl apply -f kubernetes/service.yaml
+  #kubectl apply -f kubernetes/service.yaml
 
 images:
   - 'gcr.io/test-model-deploy-443310/fastapi-app:latest'
