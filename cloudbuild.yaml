@@ -13,9 +13,12 @@ steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
   args:
-    - 'c'
+    - '-c'
     - |
-      kubectl apply -f kubernetes/deployment.yaml
+      echo "Debugging kubectl";
+      which kubectl;
+      kubectl version;
+      kubectl config view;
   #kubectl apply -f kubernetes/service.yaml
 
 images:
