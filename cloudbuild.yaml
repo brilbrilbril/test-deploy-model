@@ -15,14 +15,14 @@ steps:
   args:
     - 'c'
     - |
-    kubectl apply -f kubernetes/deployment.yaml
-    kubectl apply -f kubernetes/service.yaml
+      kubectl apply -f kubernetes/deployment.yaml
+      kubectl apply -f kubernetes/service.yaml
 
+images:
+  - 'gcr.io/test-model-deploy-443310/fastapi-app:latest'
 
   #push deploy to cloud run
 # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
 #   entrypoint: gcloud
 #   args: ['run', 'deploy', 'fast-api-test', '--image', 'gcr.io/test-model-deploy-443310/fastapi-app:latest', '--timeout', '60m', '--region', 'us-central1', '--platform', 'managed', --allow-unauthenticated]
 
-images:
-  - 'gcr.io/test-model-deploy-443310/fastapi-app:latest'
