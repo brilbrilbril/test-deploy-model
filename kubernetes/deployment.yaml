@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: fast-api
-        image: brillyando/k8s-fastapi:0.0.1
+        image: 'gcr.io/test-model-deploy-443310/fastapi-app:latest'
         ports:
         - containerPort: 80
         resources:
