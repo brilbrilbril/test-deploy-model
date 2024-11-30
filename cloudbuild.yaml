@@ -1,13 +1,21 @@
 options:
   logging: CLOUD_LOGGING_ONLY
 steps:
-#   #build
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['build', '-t', 'gcr.io/test-model-deploy-443310/fastapi-app:latest', '.']
+  #build
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/test-model-deploy-443310/fastapi-app:latest', '.']
 
-#   #push
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['push', 'gcr.io/test-model-deploy-443310/fastapi-app:latest']
+  #push
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/test-model-deploy-443310/fastapi-app:latest']
+
+  #authenticate
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      gcloud container clusters get-credentials ci-cd-test-cluster --zone us-central1-a --project test-model-deploy-443310
 
   #deploy to gke
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
