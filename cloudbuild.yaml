@@ -9,10 +9,10 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/test-model-deploy-443310/fastapi-app:latest']
 
-#   #push deploy to cloud run
-# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-#   entrypoint: gcloud
-#   args: ['run', 'deploy', 'fast-api-test', '--image', 'gcr.io/test-model-deploy-443310/fastapi-app:latest', '--region', 'us-central1', '--platform', 'managed', --allow-unauthenticated]
+  #push deploy to cloud run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'fast-api-test', '--image', 'gcr.io/test-model-deploy-443310/fastapi-app:latest', '--region', 'us-central1', '--platform', 'managed', --allow-unauthenticated]
 
 images:
   - 'gcr.io/test-model-deploy-443310/fastapi-app:latest'
