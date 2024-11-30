@@ -5,7 +5,7 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/test-model-deploy-443310/fastapi-app:latest', '.']
 
-  #deploy
+  #push
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/test-model-deploy-443310/fastapi-app:latest']
 
