@@ -15,11 +15,8 @@ steps:
   args:
     - '-c'
     - |
-      echo "Debugging kubectl";
-      which kubectl;
-      kubectl version;
-      kubectl config view;
-  #kubectl apply -f kubernetes/service.yaml
+      kubectl apply -f kubernetes/deployment.yaml
+      kubectl apply -f kubernetes/service.yaml
 
 images:
   - 'gcr.io/test-model-deploy-443310/fastapi-app:latest'
