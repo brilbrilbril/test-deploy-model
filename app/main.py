@@ -26,7 +26,3 @@ def read_root():
 @app.get("/task")
 def perform_task():
     return {"Task": "This is another task executed via a different route"}
-
-@app.get("/task2")
-def perform_task():
-    return {"Task2": "This is task2 executed via a different route"}
