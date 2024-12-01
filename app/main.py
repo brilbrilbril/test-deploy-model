@@ -20,9 +20,13 @@ def generate_text(request: GenerateRequest):
 # it's like welcoming page
 @app.get("/")
 def read_root():
-    return {"Hello": "Fastapi inside GKE"}
+    return {"Hello": "Fastapi in container, check before deploy the model"}
 
 # test different route
 @app.get("/task")
 def perform_task():
     return {"Task": "This is another task executed via a different route"}
+
+@app.get("/task2")
+def perform_task():
+    return {"Task2": "This is task2 executed via a different route"}
